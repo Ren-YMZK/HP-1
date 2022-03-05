@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+header .drawer {
+  visibility: hidden;
+}
+
 body {
   font-size: 15px;
   line-height: 1.8;
@@ -152,71 +156,6 @@ li {
   opacity: 0.8;
 }
 
-.recruit {
-  display: inline-block;
-  position: relative;
-  width: 100%;
-  margin-top: 400px;
-}
-
-.recruit_inner {
-  width: 40%;
-  position: relative;
-  left: 100px;
-  top: 280px;
-  z-index: 1;
-}
-
-.recruit h3 {
-  font-size: 50px;
-  color: rgb(189, 120, 230);
-}
-
-.recruit h3 small {
-  font-size: 20px;
-  color: #555;
-  font-weight: bold;
-}
-
-.recruit h4 {
-  font-size: 25px;
-  padding-top: 40px;
-  color: #222;
-}
-
-.recruit p {
-  line-height: 2.5;
-}
-
-.recruit .btn a {
-  text-align: center;
-  background: rgb(189, 120, 230);
-  padding: 20px 60px;
-  position: relative;
-  top: 90px;
-  color: #fff;
-  font-size: 20px;
-  border-radius: 4px;
-}
-
-.recruit img {
-  position: relative;
-  float: right;
-  width: 50%;
-  height: auto;
-  z-index: 1;
-  bottom: 500px;
-}
-
-.recruit_bg {
-  width: 80%;
-  height: 700px;
-  background-color: #eee;
-  position: absolute;
-  top: 150px;
-  z-index: 0;
-}
-
 .contact h3 {
   font-size: 50px;
   color: rgb(189, 120, 230);
@@ -326,4 +265,74 @@ footer {
   font-size: 5px;
   font-weight: bold;
   padding: 10px;
+}
+
+@media screen and (max-width: 1024px) {
+  header .drawer {
+  visibility: visible;
+  width: 24px;
+  right: 15px;
+  margin: 18px;
+  position: absolute;
+  border-top: solid 4px #aaaaaa;
+  cursor: pointer;
+  z-index: 100;
+}
+
+header .drawer::before,
+header .drawer::after {
+  content: "";
+  display: block;
+  width: 24px;
+  background: #aaaaaa;
+  height: 4px;
+  position: absolute;
+  right: 0;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+header .drawer::before {
+  top: 6px;
+}
+header .drawer::after {
+  top: 15px;
+}
+
+header .navbar {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: none;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background: #fff;
+}
+
+header .navbar ul {
+  display: block;
+  text-align: center;
+  float: none;
+  top: 20%;
+}
+
+header .navbar ul li a {
+  font: 18px;
+  line-height: 2;
+}
+
+body.nav-open header .drawer {
+  border-top: 0;
+}
+
+body.nav-open header .drawer::before {
+  top: 9px;
+  transform: rotate(-45deg);
+}
+
+body.nav-open header .drawer::after {
+  top: 9px;
+  transform: rotate(45deg);
+}
 }
